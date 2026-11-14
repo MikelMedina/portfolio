@@ -380,17 +380,74 @@
             </div>
 
         </section>
+    <div class="mx-auto mt-12 w-full max-w-xl">
+        <form
+            class="rounded-2xl bg-gray-900 p-6 sm:p-8 ring-1 ring-inset ring-gray-700 shadow-lg"
+            action="{{ route('contact.store') }}"
+            method="POST"
+        >
+            @csrf
+
+            <fieldset class="flex flex-col gap-5">
+                <legend class="mb-1 text-2xl sm:text-3xl font-semibold">Contáctame</legend>
+                <p class="-mt-2 text-sm sm:text-base text-gray-400">
+                    ¿Tienes una propuesta o quieres hablar conmigo? Escríbeme.
+                </p>
+
+                <div class="flex flex-col gap-1.5">
+                    <label for="name" class="text-sm font-medium text-gray-200">Nombre</label>
+                    <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="Tu nombre"
+                        autocomplete="name"
+                        class="w-full rounded-lg bg-gray-800 px-4 py-2.5 text-white placeholder:text-gray-500 ring-1 ring-inset ring-gray-700 transition focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                    >
+                </div>
+
+                <div class="flex flex-col gap-1.5">
+                    <label for="email" class="text-sm font-medium text-gray-200">Email</label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="tu@email.com"
+                        autocomplete="email"
+                        class="w-full rounded-lg bg-gray-800 px-4 py-2.5 text-white placeholder:text-gray-500 ring-1 ring-inset ring-gray-700 transition focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                    >
+                </div>
+
+                <div class="flex flex-col gap-1.5">
+                    <label for="message" class="text-sm font-medium text-gray-200">Mensaje</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        maxlength="500"
+                        placeholder="Cuéntame en qué puedo ayudarte..."
+                        class="min-h-32 w-full resize-none rounded-lg bg-gray-800 px-4 py-2.5 text-white placeholder:text-gray-500 ring-1 ring-inset ring-gray-700 transition field-sizing-content focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                    ></textarea>
+                    <p id="message-count" class="text-right text-xs sm:text-sm text-gray-400">0/500 caracteres</p>
+                </div>
+            </fieldset>
+
+            <button
+                type="submit"
+                class="mt-6 w-full sm:w-auto rounded-lg bg-indigo-500 px-6 py-3 text-sm sm:text-base font-semibold text-white transition-colors duration-200 hover:bg-indigo-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 cursor-pointer"
+            >
+                Enviar mensaje
+            </button>
+        </form>
+    </div>
+
     </main>
-
-    
-
 
     <footer class="py-4 bg-gray-900 mt-12 flex justify-center">
         <p class="text-sm sm:text-base">Todos los derechos reservados © {{ now()->format('Y') }}</p>
     </footer>
     
 
-
+    <script src="../js/app.js" ><script/>
 
 </body>
 </html>
