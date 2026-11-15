@@ -385,6 +385,7 @@
             class="rounded-2xl bg-gray-900 p-6 sm:p-8 ring-1 ring-inset ring-gray-700 shadow-lg"
             action="{{ route('contact.store') }}"
             method="POST"
+            novalidate
         >
             @csrf
 
@@ -400,10 +401,15 @@
                         id="name"
                         name="name"
                         type="text"
+                        maxlength="90"
                         placeholder="Tu nombre"
                         autocomplete="name"
                         class="w-full rounded-lg bg-gray-800 px-4 py-2.5 text-white placeholder:text-gray-500 ring-1 ring-inset ring-gray-700 transition focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        value="{{ old('name') }}"
                     >
+                    @error('name')
+                        <p class="py-2 px-3 bg-red-50 text-red-700 my-1 rounded-lg">{{ $message }}</p>
+                    @enderror   
                 </div>
 
                 <div class="flex flex-col gap-1.5">
@@ -412,10 +418,15 @@
                         id="email"
                         name="email"
                         type="email"
+                        maxlength="255"
                         placeholder="tu@email.com"
                         autocomplete="email"
                         class="w-full rounded-lg bg-gray-800 px-4 py-2.5 text-white placeholder:text-gray-500 ring-1 ring-inset ring-gray-700 transition focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        value="{{ old('email') }}"
                     >
+                    @error('email')
+                        <p class="py-2 px-3 bg-red-50 text-red-700 my-1 rounded-lg">{{ $message }}</p>
+                    @enderror   
                 </div>
 
                 <div class="flex flex-col gap-1.5">
@@ -426,8 +437,11 @@
                         maxlength="500"
                         placeholder="Cuéntame en qué puedo ayudarte..."
                         class="min-h-32 w-full resize-none rounded-lg bg-gray-800 px-4 py-2.5 text-white placeholder:text-gray-500 ring-1 ring-inset ring-gray-700 transition field-sizing-content focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                    ></textarea>
+                    >{{ old('message') }}</textarea>
                     <p id="message-count" class="text-right text-xs sm:text-sm text-gray-400">0/500 caracteres</p>
+                    @error('message')
+                        <p class="py-2 px-3 bg-red-50 text-red-700 my-1 rounded-lg">{{ $message }}</p>
+                    @enderror   
                 </div>
             </fieldset>
 
